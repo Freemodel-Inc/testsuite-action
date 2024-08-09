@@ -5,5 +5,5 @@ set -eu
 echo running testsuite
 
 pwd
-find ../..
 
+find .
