@@ -1,0 +1,25 @@
+name: 'Freemodel TestSuite'
+description: 'Execute the Freemodel Test Suite'
+inputs:
+  endpoint:
+    description: 'GraphQL endpoint to test.  e.g. http://localhost:4000/graphql'
+    required: true
+  aws-access-key-id:
+    description: 'AWS Access Key ID that can access shared services artifacts buckets'
+    required: true
+  aws-secret-access-key:
+    description: 'AWS Secret Access Key that can access shared services artifacts buckets'
+    required: true
+  aws-region:
+    description: 'AWS Region that can access shared services artifacts buckets'
+    default: 'us-west-2'
+runs:
+  using: 'composite'
+  steps:
+    - run: ${{ github.action_path }}/scripts/run-testsuite.sh
+      shell: bash
+      env:
+        ENDPOINT: ${{ inputs.endpoint }}
+        AWS_ACCESS_KEY_ID: ${{ inputs.aws-access-key-id }}
+        AWS_SECRET_ACCESS_KEY: ${{ inputs.aws-secret-access-key }}
+        AWS_REGION: ${{ inputs.aws-region }}
