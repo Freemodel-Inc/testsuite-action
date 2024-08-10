@@ -13,5 +13,5 @@ chmod +x scenarioql
 echo "./scenarioql --concurrency 12 --dir ${DIR} --endpoint ${ENDPOINT} --no-fail-on-error"
 ./scenarioql --concurrency 12 --dir "${DIR}" --endpoint "${ENDPOINT}" --no-fail-on-error
 
-find . -name
+find .
 
