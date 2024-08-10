@@ -1,6 +1,10 @@
 name: 'Freemodel TestSuite'
 description: 'Execute the Freemodel Test Suite'
 inputs:
+  dir:
+    description: 'directory containing graphql tests (.yml)'
+    required: true
+    default: 'testsuite'
   endpoint:
     description: 'GraphQL endpoint to test.  e.g. http://localhost:4000/graphql'
     required: true
@@ -19,6 +23,7 @@ runs:
     - run: ${{ github.action_path }}/scripts/run-testsuite.sh
       shell: bash
       env:
+        DIR: ${{ inputs.dir }}
         ENDPOINT: ${{ inputs.endpoint }}
         AWS_ACCESS_KEY_ID: ${{ inputs.aws-access-key-id }}
         AWS_SECRET_ACCESS_KEY: ${{ inputs.aws-secret-access-key }}
